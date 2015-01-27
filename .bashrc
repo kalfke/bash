@@ -1,5 +1,7 @@
-# welcome to my .bash_profile
+# welcome to my .bashrc
 alias hosts="sudo vim /etc/hosts"
+
+export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
 
 #   -----------------------------
 #   1.  MAKE GIT BETTER
@@ -20,9 +22,7 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
-
-#   -----------------------------
+#
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
 
