@@ -1,19 +1,25 @@
 # welcome to my .bashrc
-alias hosts="sudo vim /etc/hosts"
 
 export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
 
+export GOPATH=$HOME/Programming/Go
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH=${JAVA_HOME}/bin:$PATH
 #   -----------------------------
 #   1.  MAKE GIT BETTER
 #   -----------------------------
-
+alias sb='git branch | grep'
+alias gt='git tag -l --sort=version:refname "v*"'
+alias gtfo='git reset --hard HEAD'
 alias push='git push origin '
 alias pull='git pull origin '
 alias gs='git status'
 alias gds='git diff HEAD | subl&'
 alias gda='git diff HEAD | tmpin atom&'
+alias gau='git add -u'
+alias commit='git commit -m'
 alias lw='git for-each-ref --sort=-committerdate refs/heads/ | head'
-
+alias clean='git clean -qfdx'
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
@@ -26,6 +32,7 @@ function parse_git_branch {
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
 
+alias hosts="sudo vim /etc/hosts"
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
