@@ -1,0 +1,5 @@
+# welcome to my .bashrc
+#   -----------------------------
+#   2.  MAKE TERMINAL BETTER
+#   -----------------------------
+alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder

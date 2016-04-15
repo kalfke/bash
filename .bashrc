@@ -1,10 +1,11 @@
 # welcome to my .bashrc
-
 export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
 
 export GOPATH=$HOME/Programming/Go
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export PATH=${JAVA_HOME}/bin:$PATH
+
+alias reload='. ~/.bash_profile'
 #   -----------------------------
 #   1.  MAKE GIT BETTER
 #   -----------------------------
@@ -33,7 +34,6 @@ function parse_git_branch {
 #   -----------------------------
 
 alias hosts="sudo vim /etc/hosts"
-alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
@@ -75,7 +75,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 
 #   cpuHogs:  Find CPU hogs
 #   -----------------------------------------------------
-    alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+    alias cpuHogsTop='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
 #   topForever:  Continual 'top' listing (every 10 seconds)
 #   -----------------------------------------------------
@@ -83,8 +83,6 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 
 #   ttop:  Recommended 'top' invocation to minimize resources
 #   ------------------------------------------------------------
-#       Taken from this macosxhints article
-#       http://www.macosxhints.com/article.php?story=20060816123853639
 #   ------------------------------------------------------------
     alias ttop="top -R -F -s 10 -o rsize"
 
