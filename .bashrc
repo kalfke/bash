@@ -1,8 +1,16 @@
 # welcome to my .bashrc
 export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
-export GOPATH=$HOME/Programming/Go
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export PATH=${JAVA_HOME}/bin:$PATH
+
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_7_HOME=$(/usr/libexec/java_home -v1.7)
+
+alias java7='export JAVA_HOME=$JAVA_7_HOME;PATH=${JAVA_HOME}/bin:$PATH'
+alias java8='export JAVA_HOME=$JAVA_8_HOME;PATH=${JAVA_HOME}/bin:$PATH'
+
+#default java8
+export JAVA_HOME=$JAVA_8_HOME
+
+export PATH=${JAVA_HOME}/bin:${MVN_HOME}/bin:$PATH
 
 alias reload='. ~/.bash_profile'
 
@@ -18,11 +26,13 @@ alias gs='git status'
 alias gds='git diff HEAD | subl&'
 alias gda='git diff HEAD | tmpin atom&'
 alias gau='git add -u'
+alias co='git checkout '
+alias cob='git checkout -b '
 alias commit='git commit -m'
 alias lw='git for-each-ref --sort=-committerdate refs/heads/ | head'
 alias clean='git clean -qfdx'
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
 }
 
 function parse_git_branch {
@@ -87,4 +97,4 @@ my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
 #   ---------------------------
 #   6.  NETWORKING
 #   ---------------------------
-alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
+alias myip='curl https://api.ipify.org'                    # myip:         Public facing IP Address
