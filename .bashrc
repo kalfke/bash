@@ -2,16 +2,13 @@
 export PS1='\n\[\033[0;33m\]\u\[\033[0;97m\]:\[\033[0;31m\]\w \[\033[0;95m\]$(parse_git_branch)\n\[\033[0;32m\]>\[\033[0m\] '
 
 export EDITOR=vim
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_7_HOME=$(/usr/libexec/java_home -v1.7)
-
-alias java7='export JAVA_HOME=$JAVA_7_HOME;PATH=${JAVA_HOME}/bin:$PATH'
-alias java8='export JAVA_HOME=$JAVA_8_HOME;PATH=${JAVA_HOME}/bin:$PATH'
-
+#export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+#export JAVA_7_HOME=$(/usr/libexec/java_home -v1.7)
+#alias java7='export JAVA_HOME=$JAVA_7_HOME;PATH=${JAVA_HOME}/bin:$PATH'
+#alias java8='export JAVA_HOME=$JAVA_8_HOME;PATH=${JAVA_HOME}/bin:$PATH'
 #default java8
-export JAVA_HOME=$JAVA_8_HOME
-
-export PATH=${JAVA_HOME}/bin:${MVN_HOME}/bin:$PATH
+#export JAVA_HOME=$JAVA_8_HOME
+#export PATH=${JAVA_HOME}/bin:${MVN_HOME}/bin:$PATH
 
 alias reload='. ~/.bash_profile'
 
